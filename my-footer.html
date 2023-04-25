@@ -1,0 +1,28 @@
+<template id="my-footer">
+    <style>
+        .container {
+            text-align: center;
+        }
+    </style>
+    <div class="container">
+        <h1>Hello</h1>
+        <img src="https://goo.gl/DsFqxn" alt="">
+    </div>
+</template>
+<script>
+    class MyFooter extends HTMLElement {
+        constructor() {
+            super();
+            const template = 
+                document.querySelector('#my-footer-link')
+                    .import.querySelector('#my-footer');
+
+            this.attachShadow({mode: 'open'})
+                .appendChild(
+                    document.importNode(template.content, true)
+                );
+        }
+    }
+
+    window.customElements.define('my-footer', MyFooter);
+</script>

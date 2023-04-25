@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Components</title>
+    <style>
+        .d-flex {
+            display: flex;
+            gap: .3em;
+            flex-wrap: wrap;
+        }
+
+        .flex-item {
+            flex: 1 1 100px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 840px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex container">
+        <my-card class="flex-item"></my-card>
+        <my-card class="flex-item"></my-card>
+        <my-card class="flex-item"></my-card>
+        <my-card class="flex-item"></my-card>
+        <my-card class="flex-item"></my-card>
+        <my-card class="flex-item"></my-card>
+    </div>
+    <template id="my-card">
+        <style>
+            .card {
+                height: 100px;
+                color: white;
+                background-color: red;
+                border-radius: 4px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: .3em;
+            }
+        </style>
+        <div class="card">
+            <span>My Card</span>
+        </div>
+    </template>
+    <script>
+        class MyCard extends HTMLElement {
+            constructor() {
+                super();
+                let template = document.getElementById('my-card');
+                let templateContent = template.content;
+
+                const shadowRoot = this.attachShadow({ mode: 'open' });
+                shadowRoot.appendChild(templateContent.cloneNode(true));
+            }
+        }
+
+        window.customElements.define('my-card', MyCard);
+    </script>
+</body>
+</html>

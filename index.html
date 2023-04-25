@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Components</title>
+    <style>
+        .d-flex {
+            display: flex;
+            gap: .3em;
+            flex-wrap: wrap;
+        }
+
+        .flex-item {
+            flex: 1 1 100px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 840px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex container">
+        <my-card class="flex-item" text="Card One"></my-card>
+        <my-card class="flex-item" text="Card Two"></my-card>
+        <my-card class="flex-item" text="Card Three"></my-card>
+        <my-card class="flex-item" text="Card Four"></my-card>
+    </div>
+
+    <script src="my-card/my-card.js"></script>
+</body>
+</html>
